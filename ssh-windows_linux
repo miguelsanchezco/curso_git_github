@@ -66,3 +66,44 @@ En github settings > SSH and  GPG keys > Nes SSH key > Title and Key
 ingreso mi contrasena de GitHub y listo.
 
 SUCCESS
+
+Paso 6. 
+#Editamos las conexiones de git a repositorios remotos
+    comando: git remote -v
+        Lista los repositorios remotos enlazados con nuestro repo local
+    comando: git remote remove origin
+        Elimina la conexion con repositorio de github
+    comando: git remote add origin (SSH o HTTPS)GitHub
+        Example HTTPS: git remote add origin https://github.com/miguelsanchezco/curso_git_github.git
+        Example SSH: git remote add origin git@github.com:miguelsanchezco/curso_git_github.git
+
+    Editar una url:
+    comando: git remote set-url origin new_url_here
+
+Paso 7. Hacemos pull
+    comando: git pull
+    The authenticity of host 'github.com (140.82.114.4)' can't be established.
+    RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+    Are you sure you want to continue connecting (yes/no/[fingerprint])?: yes
+
+    Warning: Permanently added 'github.com,140.82.114.4' (RSA) to the list of known hosts.
+    From github.com:miguelsanchezco/curso_git_github
+    * [new branch]      master     -> origin/master
+    There is no tracking information for the current branch.
+    Please specify which branch you want to merge with.
+    See git-pull(1) for details.
+
+        git pull <remote> <branch>
+
+    If you wish to set tracking information for this branch you can do so with:
+
+        git branch --set-upstream-to=origin/<branch> master
+
+comando : git pull origin master
+
+Warning: Permanently added the RSA host key for IP address '140.82.113.3' to the list of known hosts.
+From github.com:miguelsanchezco/curso_git_github
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+FINISHED!
