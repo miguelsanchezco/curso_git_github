@@ -1,0 +1,68 @@
+Pasos a seguir para usar protocolo ssh 
+para autenticación en github usando Windows o Linux.
+
+Paso 1. Creamos las llaves shh (publica y privada)
+Note: Las llaves son para uso en todos los repositorios.
+Se crea 1 por usuario, computadora o cuenta.
+
+    comando: ssh-keygen -t rsa -b 4096 -C "miangel00.77@gmail.com"
+
+    Note: Lo ejecutamos en la terminal
+    -t rsa : algoritmo
+    -b 4096 : complejidad
+
+Paso 2. 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/masr/.ssh/id_rsa):
+* Presionamos ENTER
+
+Paso 3.
+Enter passphrase (empty for no passphrase): 
+* Ingresamos una contraseña para proteger la llave privada, no es obligatorio.
+* La ingresamos 2 veces "M...1..4. - teclado en español 
+
+    Your identification has been saved in /home/masr/.ssh/id_rsa
+    Your public key has been saved in /home/masr/.ssh/id_rsa.pub
+    The key fingerprint is:
+    SHA256:gXsW57DSLBp64dhtNAPUNBgkYKCHTtWUXTDmAxLkgfg miangel00.77@gmail.com
+    The key's randomart image is:
+    +---[RSA 4096]----+
+    |=o+BBB=+o.       |
+    |+ooo+o=+.        |
+    |oo... .o+ .      |
+    |o.E  . +.B       |
+    | .  o B S .      |
+    |   = * B         |
+    |  o = o          |
+    |   . .           |
+    |                 |
+    +----[SHA256]-----+
+
+Paso 4. Ya tenemos las 2 llaves creadas. Agregamos la llave
+privada al entorno. Que el SO se entere que la llave existe
+Verificamos que el servidor de llaves SSH esté prendido.
+
+    comando: eval $(ssh-agent -s)
+    >> Agent pid 66461
+    OK!
+
+Verificado que el servidor de llaves SSH está activo
+Agregamos la llave al servidor.
+
+Note: Debemos conocer la ruta donde se encuentran almacenadas
+las llaves. En este caso es: /home/masr/.ssh/id_rsa
+    ~  es equivalente a: /home/masr/
+
+    comando: ssh-add ~/.ssh/id_rsa
+    Enter passphrase for /home/masr/.ssh/id_rsa:
+    Identity added: /home/masr/.ssh/id_rsa (miangel00.77@gmail.com)
+
+SUCCESS
+Paso 5. Agregamos la llave publica a gitHub
+    comando: cat ~/.ssh/id_rsa.pub
+    visualizamos la llave publica.
+
+En github settings > SSH and  GPG keys > Nes SSH key > Title and Key
+ingreso mi contrasena de GitHub y listo.
+
+SUCCESS
